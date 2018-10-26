@@ -1,0 +1,19 @@
+{
+  "name": "pa-dss-version",
+  "version": "1.0.0",
+  "description": "Payment Application Data Security Standard - Version",
+  "main": "version.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myaxt/pa-dss-version.git"
+  },
+  "author": "Miguel Yax <mig_dj@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myaxt/pa-dss-version/issues"
+  },
+  "homepage": "https://github.com/myaxt/pa-dss-version#readme"
+}
