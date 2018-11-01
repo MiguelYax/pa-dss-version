@@ -4,7 +4,7 @@
   "description": "Payment Application Data Security Standard - Version",
   "main": "version.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/myaxt/pa-dss-version/issues"
   },
-  "homepage": "https://github.com/myaxt/pa-dss-version#readme"
+  "homepage": "https://github.com/myaxt/pa-dss-version#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
 }
