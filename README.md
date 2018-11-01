@@ -54,13 +54,13 @@ Result:
       √ Check minor version
       √ Check secure version
       √ Check crud version
-      √ Check innerface version
+      √ Check interface version
     Decrement version
       √ Check major version
       √ Check minor version
       √ Check secure version
       √ Check crud version
-      √ Check innerface version
+      √ Check interface version
 
 
   10 passing (14ms)

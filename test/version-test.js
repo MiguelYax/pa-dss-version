@@ -29,8 +29,8 @@ describe("PA DSS Version - Testing...", function() {
       var result = version.up("2.1.1.1.23", "crud");
       assert.equal(result, "2.1.1.2.23");
     });
-    it("Check innerface version", function() {
-      var result = version.up("2.1.1.1.23", "innerface");
+    it("Check interface version", function() {
+      var result = version.up("2.1.1.1.23", "interface");
       assert.equal(result, "2.1.1.1.24");
     });
   });
@@ -51,8 +51,8 @@ describe("PA DSS Version - Testing...", function() {
       var result = version.down("2.1.1.1.23", "crud");
       assert.equal(result, "2.1.1.0.23");
     });
-    it("Check innerface version", function() {
-      var result = version.down("2.1.1.1.23", "innerface");
+    it("Check interface version", function() {
+      var result = version.down("2.1.1.1.23", "interface");
       assert.equal(result, "2.1.1.1.22");
     });
   });

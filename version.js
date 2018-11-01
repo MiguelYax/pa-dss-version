@@ -10,7 +10,7 @@ class Tag {
     this._minor = 0;
     this._secure = 0;
     this._crud = 0;
-    this._inerface = 0;
+    this._interface = 0;
   }
   /**
    * @param {String} tag  `''` tag version to parse
@@ -23,7 +23,7 @@ class Tag {
       this._minor = parseInt(tagElements[1]);
       this._secure = parseInt(tagElements[2]);
       this._crud = parseInt(tagElements[3]);
-      this._inerface = parseInt(tagElements[4]);
+      this._interface = parseInt(tagElements[4]);
     } else {
       throw this.error("Invalid tag pattern", 1);
     }
@@ -75,7 +75,7 @@ class Tag {
           this._minor = 0;
           this._secure = 0;
           this._crud = 0;
-          this._inerface = 0;
+          this._interface = 0;
         }
         break;
       case "minor":
@@ -83,7 +83,7 @@ class Tag {
           this._minor += add;
           this._secure = 0;
           this._crud = 0;
-          this._inerface = 0;
+          this._interface = 0;
         }
         break;
       case "secure":
@@ -96,9 +96,9 @@ class Tag {
           this._crud += add;
         }
         break;
-      case "innerface":
+      case "interface":
         {
-          this._inerface += add;
+          this._interface += add;
         }
         break;
       default:
@@ -109,7 +109,7 @@ class Tag {
       this._minor,
       this._secure,
       this._crud,
-      this._inerface
+      this._interface
     ].join(".");
   }
 }
