@@ -8,61 +8,97 @@ class Tag {
     this._tagRegex = /\d+\.\d+\.\d+\.\d+\.\d+/;
     this._major = 0;
     this._minor = 0;
-    this._security = 0;
+    this._secure = 0;
     this._crud = 0;
     this._inerface = 0;
   }
+  /**
+   * @param {String} tag  `''` tag version to parse
+   * @private
+   */
   parse(tag) {
     if (typeof tag == "string" && this._tagRegex.test(tag.trim())) {
       let tagElements = tag.split(".");
       this._major = parseInt(tagElements[0]);
       this._minor = parseInt(tagElements[1]);
-      this._security = parseInt(tagElements[2]);
+      this._secure = parseInt(tagElements[2]);
       this._crud = parseInt(tagElements[3]);
       this._inerface = parseInt(tagElements[4]);
     } else {
-      throw this.error("Invalid tag pattern");
+      throw this.error("Invalid tag pattern", 1);
     }
   }
-  error(message, code) {
+  /**
+   * @param {String} message  `Error` Error message
+   * @param {Number} code  `0` Error code
+   * @private
+   */
+  error(message = "Error", code = 0) {
     return {
       message: message,
       code: code
     };
   }
-  change(tag, mode) {
+
+  /**
+   * increase tag version
+   * @param {Number} tag  `` tag version
+   * @param {String} mode  `` change mode
+   * @public
+   */
+  up(tag, mode) {
+    return this.change(tag, mode, true);
+  }
+  /**
+   * decrease tag version
+   * @param {Number} tag  `` tag version
+   * @param {String} mode  `` change mode
+   * @public
+   */
+  down(tag, mode) {
+    return this.change(tag, mode, false);
+  }
+  /**
+   * decrease tag version
+   * @param {Number} tag  `` tag version
+   * @param {String} mode  `` change mode ['major', 'minor', 'secure', 'crud', 'innerface']
+   * @param {Boolean} inc  `false` increase or decrease tag version
+   * @private
+   */
+  change(tag, mode, inc) {
     this.parse(tag);
+    var add = inc ? 1 : -1;
     switch (mode) {
       case "major":
         {
-          this._major += 1;
+          this._major += add;
           this._minor = 0;
-          this._security = 0;
+          this._secure = 0;
           this._crud = 0;
           this._inerface = 0;
         }
         break;
       case "minor":
         {
-          this._minor += 1;
-          this._security = 0;
+          this._minor += add;
+          this._secure = 0;
           this._crud = 0;
           this._inerface = 0;
         }
         break;
       case "secure":
         {
-          this._security += 1;
+          this._secure += add;
         }
         break;
       case "crud":
         {
-          this._crud += 1;
+          this._crud += add;
         }
         break;
       case "innerface":
         {
-          this._inerface += 1;
+          this._inerface += add;
         }
         break;
       default:
@@ -71,7 +107,7 @@ class Tag {
     return [
       this._major,
       this._minor,
-      this._security,
+      this._secure,
       this._crud,
       this._inerface
     ].join(".");
