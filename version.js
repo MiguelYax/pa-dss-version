@@ -61,7 +61,7 @@ class Tag {
   /**
    * decrease tag version
    * @param {Number} tag  `` tag version
-   * @param {String} mode  `` change mode ['major', 'minor', 'secure', 'crud', 'innerface']
+   * @param {String} mode  `` change mode ['major', 'minor', 'secure', 'crud', 'interface']
    * @param {Boolean} inc  `false` increase or decrease tag version
    * @private
    */
