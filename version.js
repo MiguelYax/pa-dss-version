@@ -115,4 +115,4 @@ class Tag {
 }
 
 // export default Tag;
-module.exports = Tag;
+module.exports = new Tag();

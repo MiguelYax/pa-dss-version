@@ -4,8 +4,8 @@
  * tester... 
  */
 var chai = require("chai");
-var versionClass = require("../version");
-var version = new versionClass();
+var version = require("../version");
+
 
 var assert = chai.assert,
   should = chai.should(),

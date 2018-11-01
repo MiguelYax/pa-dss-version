@@ -11,7 +11,7 @@
     "url": "git+https://github.com/myaxt/pa-dss-version.git"
   },
   "author": "Miguel Yax <mig_dj@hotmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/myaxt/pa-dss-version/issues"
   },
