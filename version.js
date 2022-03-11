@@ -18,7 +18,7 @@ class Tag {
    */
   parse(tag) {
     if (typeof tag == "string" && this._tagRegex.test(tag.trim())) {
-      let tagElements = tag.split(".");
+      const tagElements = tag.split(".");
       this._major = parseInt(tagElements[0]);
       this._minor = parseInt(tagElements[1]);
       this._secure = parseInt(tagElements[2]);
@@ -67,7 +67,7 @@ class Tag {
    */
   change(tag, mode, inc) {
     this.parse(tag);
-    var add = inc ? 1 : -1;
+    const add = inc ? 1 : -1;
     switch (mode) {
       case "major":
         {
