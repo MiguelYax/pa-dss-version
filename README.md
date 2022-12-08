@@ -6,7 +6,7 @@ More information about [PA DSS](https://www.pcisecuritystandards.org/)
 
 # Install
 
-```
+```sh
 npm install pa-dss-version --save
 ```
 
@@ -39,15 +39,15 @@ If you have ideas for more “How To” recipes that should be on this page, let
 
 # Test
 
-using mocha and chai to check methods
+Using ava to unit tests
 
-```
+```sh
 npm test
 ```
 
 Result:
 
-```
+```sh
   ✔ Increment major version
   ✔ Increment minor version
   ✔ Increment secure version
