@@ -3,6 +3,9 @@
   "version": "1.1.0",
   "description": "Payment Application Data Security Standard - Version",
   "main": "version.js",
+  "files": [
+    "version.js"
+  ],
   "scripts": {
     "test": "ava"
   },
