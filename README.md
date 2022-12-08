@@ -48,20 +48,17 @@ npm test
 Result:
 
 ```
-  PA DSS Version - Testing...
-    Increment version
-      √ Check major version
-      √ Check minor version
-      √ Check secure version
-      √ Check crud version
-      √ Check interface version
-    Decrement version
-      √ Check major version
-      √ Check minor version
-      √ Check secure version
-      √ Check crud version
-      √ Check interface version
+  ✔ Increment major version
+  ✔ Increment minor version
+  ✔ Increment secure version
+  ✔ Increment crud version
+  ✔ Increment interface version
+  ✔ Decrement major version
+  ✔ Decrement minor version
+  ✔ Decrement secure version
+  ✔ Decrement crud version
+  ✔ Decrement interface version
+  ─
 
-
-  10 passing (14ms)
+  10 tests passed
 ```
