@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/myaxt/pa-dss-version.git"
+    "url": "git+https://github.com/MiguelYax/pa-dss-version.git"
   },
   "author": "Miguel Yax <mig_dj@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/myaxt/pa-dss-version/issues"
+    "url": "https://github.com/MiguelYax/pa-dss-version/issues"
   },
-  "homepage": "https://github.com/myaxt/pa-dss-version#readme",
+  "homepage": "https://github.com/MiguelYax/pa-dss-version#readme",
   "devDependencies": {
     "ava": "^5.1.0"
   }
