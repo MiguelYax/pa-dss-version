@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/MiguelYax/pa-dss-version#readme",
   "devDependencies": {
-    "ava": "^5.1.0"
+    "ava": "^5.3.1"
   },
   "volta": {
-    "node": "18.16.1"
+    "node": "20.12.2"
   }
 }
