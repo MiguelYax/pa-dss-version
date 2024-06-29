@@ -1,6 +1,6 @@
 {
   "name": "pa-dss-version",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Payment Application Data Security Standard - Version",
   "main": "version.js",
   "files": [
