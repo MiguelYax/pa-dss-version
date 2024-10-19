@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/MiguelYax/pa-dss-version#readme",
   "volta": {
-    "node": "20.13.1"
+    "node": "22.10.0"
   }
 }
