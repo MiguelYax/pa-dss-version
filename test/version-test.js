@@ -4,7 +4,7 @@
  * tester... 
  */
 const test = require('node:test')
-const { strictEqual } = require('node:assert')
+const { strictEqual, deepStrictEqual } = require('node:assert')
 const version = require("../version");
 
 test("Increment major version", (t) => {
@@ -46,4 +46,14 @@ test("Decrement crud version", (t) => {
 test("Decrement interface version", (t) => {
   const result = version.down("2.1.1.1.23", "interface");
   strictEqual(result, "2.1.1.1.22");
+});
+test("version tag parse", (t) => {
+  const result = version.parse('1.2.3.4.5');
+  deepStrictEqual(result, {
+    major: 1,
+    minor: 2,
+    secure: 3,
+    crud: 4,
+    interface: 5
+  });
 });

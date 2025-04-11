@@ -7,8 +7,8 @@
 const tagRegex = /\d+\.\d+\.\d+\.\d+\.\d+/;
 
 /**
- * @param {String} tag  `''` tag version to parse
- * @returns {object} version
+ * @param {String} tag  `` tag version to parse e.g. 1.2.3.4.5
+ * @returns {object} `` version parsed
  */
 const parse = (tag) => {
   if (typeof tag == "string" && tagRegex.test(tag.trim())) {
@@ -98,5 +98,6 @@ const down = (tag, mode) => {
 
 module.exports = {
   up,
-  down
+  down,
+  parse
 };

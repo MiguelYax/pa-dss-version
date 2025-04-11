@@ -15,6 +15,9 @@ npm install pa-dss-version --save
 ```js
 const version = require('pa-dss-version');
 
+// parse tag
+version.parse('1.2.3.4.5') // returns { major: 1, minor: 2, secure: 3, crud: 4, interface: 5 }
+
 //increase tag version
 
 version.up('1.0.1.1.20', 'major'); // 2.0.0.0.0
@@ -39,7 +42,7 @@ If you have ideas for more “How To” recipes that should be on this page, let
 
 # Test
 
-Using ava to unit tests
+Using native node tests
 
 ```sh
 npm test
