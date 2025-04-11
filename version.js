@@ -7,18 +7,6 @@
 const tagRegex = /\d+\.\d+\.\d+\.\d+\.\d+/;
 
 /**
- * @param {String} message  `Error` Error message
- * @param {Number} code  `0` Error code
- * @private
- */
-const error = (message = "Error", code = 0) => {
-  return {
-    message: message,
-    code: code
-  };
-}
-
-/**
  * @param {String} tag  `''` tag version to parse
  * @returns {object} version
  */
@@ -33,18 +21,15 @@ const parse = (tag) => {
       interface: parseInt(tagElements[4]),
     }
   } else {
-    throw error("Invalid tag pattern", 1);
+    throw new Error('Invalid version format.')
   }
 }
 
-
-
 /**
-   * decrease tag version
+   * change tag version
    * @param {Number} tag  `` tag version
    * @param {String} mode  `` change mode ['major', 'minor', 'secure', 'crud', 'interface']
    * @param {Boolean} inc  `false` increase or decrease tag version
-   * @private
    */
 const change = (tag, mode, inc) => {
   let {
@@ -97,23 +82,21 @@ const change = (tag, mode, inc) => {
  * increase tag version
  * @param {Number} tag  `` tag version
  * @param {String} mode  `` change mode
- * @public
  */
 const up = (tag, mode) => {
   return change(tag, mode, true);
 }
+
 /**
  * decrease tag version
  * @param {Number} tag  `` tag version
  * @param {String} mode  `` change mode
- * @public
  */
 const down = (tag, mode) => {
   return change(tag, mode, false);
 }
 
-
 module.exports = {
   up,
   down
-}
+};
