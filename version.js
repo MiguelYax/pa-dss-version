@@ -4,100 +4,53 @@
  * implement pa-dss version tag
  */
 
-const tagRegex = /\d+\.\d+\.\d+\.\d+\.\d+/;
+const tagRegex = /^\d+\.\d+\.\d+\.\d+\.\d+$/;
+const MODES = ['major', 'minor', 'secure', 'crud', 'interface'];
 
 /**
- * @param {String} tag  `` tag version to parse e.g. 1.2.3.4.5
- * @returns {object} `` version parsed
+ * Parse a version tag string into an object.
+ * @param {String} tag e.g. "1.2.3.4.5"
+ * @returns {Array} Parsed version
  */
 const parse = (tag) => {
-  if (typeof tag == "string" && tagRegex.test(tag.trim())) {
-    const tagElements = tag.split(".");
-    return {
-      major: parseInt(tagElements[0]),
-      minor: parseInt(tagElements[1]),
-      secure: parseInt(tagElements[2]),
-      crud: parseInt(tagElements[3]),
-      interface: parseInt(tagElements[4]),
-    }
-  } else {
-    throw new Error('Invalid version format.')
+  if (typeof tag === "string" && tagRegex.test(tag.trim())) {
+    return tag.split('.').map(Number);
   }
-}
-
-/**
-   * change tag version
-   * @param {Number} tag  `` tag version
-   * @param {String} mode  `` change mode ['major', 'minor', 'secure', 'crud', 'interface']
-   * @param {Boolean} inc  `false` increase or decrease tag version
-   */
-const change = (tag, mode, inc) => {
-  let {
-    major,
-    minor,
-    secure,
-    crud,
-    interface
-  } = parse(tag);
-  const add = inc ? 1 : -1;
-  switch (mode) {
-    case "major":
-      {
-        major += add;
-        minor = 0;
-        secure = 0;
-        crud = 0;
-        interface = 0;
-      }
-      break;
-    case "minor":
-      {
-        minor += add;
-        secure = 0;
-        crud = 0;
-        interface = 0;
-      }
-      break;
-    case "secure":
-      {
-        secure += add;
-      }
-      break;
-    case "crud":
-      {
-        crud += add;
-      }
-      break;
-    case "interface":
-      {
-        interface += add;
-      }
-      break;
-  }
-
-  return `${major}.${minor}.${secure}.${crud}.${interface}`;
-}
-
-/**
- * increase tag version
- * @param {Number} tag  `` tag version
- * @param {String} mode  `` change mode
- */
-const up = (tag, mode) => {
-  return change(tag, mode, true);
-}
-
-/**
- * decrease tag version
- * @param {Number} tag  `` tag version
- * @param {String} mode  `` change mode
- */
-const down = (tag, mode) => {
-  return change(tag, mode, false);
-}
-
-module.exports = {
-  up,
-  down,
-  parse
+  throw new Error('Invalid version format.');
 };
+
+/**
+ * Change a version tag by incrementing or decrementing a specific mode.
+ * @param {String} tag Version tag
+ * @param {String} mode One of ['major', 'minor', 'secure', 'crud', 'interface']
+ * @param {Boolean} inc true to increment, false to decrement
+ * @returns {String} New version tag
+ */
+const change = (tag, mode, inc) => {
+  if (!MODES.includes(mode)) throw new Error('Invalid mode.');
+  const values = parse(tag);
+  const idx = MODES.indexOf(mode);
+  values[idx] += inc ? 1 : -1;
+  if (idx <= 1) {
+    for (let i = idx + 1; i < values.length; i++) {
+      values[i] = 0
+    };
+  }
+  return values.join('.');
+};
+
+/**
+ * Increase tag version
+ * @param {String} tag Version tag
+ * @param {String} mode Change mode
+ */
+const up = (tag, mode) => change(tag, mode, true);
+
+/**
+ * Decrease tag version
+ * @param {String} tag Version tag
+ * @param {String} mode Change mode
+ */
+const down = (tag, mode) => change(tag, mode, false);
+
+module.exports = { up, down, parse };
