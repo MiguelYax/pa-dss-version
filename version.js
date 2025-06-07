@@ -13,6 +13,17 @@ const MODES = ['major', 'minor', 'secure', 'crud', 'interface'];
  * @returns {Array} Parsed version
  */
 const parse = (tag) => {
+  const [major, minor, secure, crud, interface] = getValues(tag);
+  return {
+    major,
+    minor,
+    secure,
+    crud,
+    interface
+  };
+}
+
+const getValues = (tag) => {
   if (typeof tag === "string" && tagRegex.test(tag.trim())) {
     return tag.split('.').map(Number);
   }
@@ -23,14 +34,14 @@ const parse = (tag) => {
  * Change a version tag by incrementing or decrementing a specific mode.
  * @param {String} tag Version tag
  * @param {String} mode One of ['major', 'minor', 'secure', 'crud', 'interface']
- * @param {Boolean} inc true to increment, false to decrement
+ * @param {Number} inc  Value to increment or decrement
  * @returns {String} New version tag
  */
 const change = (tag, mode, inc) => {
   if (!MODES.includes(mode)) throw new Error('Invalid mode.');
-  const values = parse(tag);
+  const values = getValues(tag);
   const idx = MODES.indexOf(mode);
-  values[idx] += inc ? 1 : -1;
+  values[idx] += inc;
   if (idx <= 1) {
     for (let i = idx + 1; i < values.length; i++) {
       values[i] = 0
@@ -44,13 +55,13 @@ const change = (tag, mode, inc) => {
  * @param {String} tag Version tag
  * @param {String} mode Change mode
  */
-const up = (tag, mode) => change(tag, mode, true);
+const up = (tag, mode) => change(tag, mode, 1);
 
 /**
  * Decrease tag version
  * @param {String} tag Version tag
  * @param {String} mode Change mode
  */
-const down = (tag, mode) => change(tag, mode, false);
+const down = (tag, mode) => change(tag, mode, -1);
 
 module.exports = { up, down, parse };

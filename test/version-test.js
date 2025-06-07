@@ -49,5 +49,11 @@ test("Decrement interface version", (t) => {
 });
 test("version tag parse", (t) => {
   const result = version.parse('1.2.3.4.5');
-  deepStrictEqual(result, [1, 2, 3, 4, 5]);
+  deepStrictEqual(result, {
+    major: 1,
+    minor: 2,
+    secure: 3,
+    crud: 4,
+    interface: 5
+  });
 });
